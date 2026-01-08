@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors"
 
 
+
 const app = express();
 
 app.use(
@@ -15,6 +16,18 @@ app.use(
 app.use(express.json({limit: "16kb"}))    // to recieve file
 app.use(express.urlencoded({extended: true, limit: "16kb"}))   //EX: url space percentage
 app.use(express.static("public"))   //Static files
+
+
+// import routes
+import healthcheckRouter from "./routes/healthcheck.routes.js"
+
+
+
+
+// routes
+app.use("/api/v1/healthcheck",healthcheckRouter);
+
+
 
 
 export {app};
